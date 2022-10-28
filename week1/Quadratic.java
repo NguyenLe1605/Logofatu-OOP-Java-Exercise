@@ -1,27 +1,27 @@
 import java.util.Scanner;
 
 public class Quadratic {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    double[] coef = new double[3];
-    for (int i = 0; i < coef.length; i++) {
-      coef[i] = sc.nextDouble();
-    }
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double c = input.nextDouble();
+        input.close();
 
-    double delta = Quadratic.discriminant(coef[0], coef[1], coef[2]);
-    if (delta < 0) {
-      System.out.println("The quadratic equation has no solution");
-    } else if (delta == 0) {
-      double sol = -coef[1] / (2 * coef[0]);
-      System.out.println("The quadratic equation has one repeated solution: " + sol);
-    } else {
-      double sol1 = (-coef[1] + Math.sqrt(delta)) / (2 * coef[0]);
-      double sol2 = (-coef[1] - Math.sqrt(delta)) / (2 * coef[0]);
-      System.out.printf("The quadratic equation has two solutions: %.3f and %.3f\n", sol1, sol2);
-    }
-  }
+        double delta = (b * b) - (4 * a * c);
 
-  public static double discriminant(double a, double b, double c) {
-    return b * b - 4 * a * c;
-  }
+        if (delta > 0) {
+            double root1 = (-b + Math.sqrt(delta)) / (2 * a * c);
+            double root2 = (-b - Math.sqrt(delta)) / (2 * a * c);
+            System.out.println("The equation has two roots");
+            System.out.println(root1);
+            System.out.println(root2);
+        } else if ((int) delta == 0) {
+            double root = -b / (2 * a * c);
+            System.out.println("The equation has one root");
+            System.out.println(root);
+        } else {
+            System.out.println("The equation returns no root");
+        }
+    }
 }
